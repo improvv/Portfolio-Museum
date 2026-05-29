@@ -120,8 +120,8 @@ function MuseumDoor({ gallery, index, onEnter, lang, image }: MuseumDoorProps) {
           {/* Door opening */}
           <div
             style={{
-              width: '180px',
-              height: '300px',
+              width: 'clamp(130px, 38vw, 180px)',
+              height: 'clamp(210px, 63vw, 300px)',
               background: 'linear-gradient(180deg, #020202 0%, #040303 50%, #060504 100%)',
               position: 'relative',
               overflow: 'hidden',
@@ -448,7 +448,7 @@ export function GalleryLobby({ onSelectGallery, onBack, lang }: GalleryLobbyProp
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: 'clamp(20px, 3vw, 48px)',
+          gap: 'clamp(10px, 3vw, 48px)',
           maxWidth: '1320px',
           width: '100%',
         }}

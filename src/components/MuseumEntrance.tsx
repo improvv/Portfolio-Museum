@@ -46,7 +46,7 @@ export function MuseumEntrance({ onEnter, onShowAbout, lang }: MuseumEntrancePro
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{
-          width: '500px',
+          width: 'min(500px, 90vw)',
           height: '280px',
           background:
             'radial-gradient(ellipse at 50% 0%, rgba(201,164,92,0.14) 0%, transparent 70%)',
@@ -126,7 +126,7 @@ export function MuseumEntrance({ onEnter, onShowAbout, lang }: MuseumEntrancePro
             whileTap={{ scale: 0.97 }}
             className="relative group overflow-hidden"
             style={{
-              padding: '14px 56px',
+              padding: '14px clamp(24px, 8vw, 56px)',
               border: '1px solid rgba(201,164,92,0.55)',
               fontSize: '12px',
               letterSpacing: '0.28em',
@@ -150,7 +150,7 @@ export function MuseumEntrance({ onEnter, onShowAbout, lang }: MuseumEntrancePro
             whileTap={{ scale: 0.97 }}
             className="relative group overflow-hidden"
             style={{
-              padding: '12px 56px',
+              padding: '12px clamp(24px, 8vw, 56px)',
               border: '1px solid rgba(201,164,92,0.22)',
               fontSize: '11px',
               letterSpacing: '0.24em',

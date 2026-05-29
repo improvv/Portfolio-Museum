@@ -219,7 +219,7 @@ export function ExhibitCarousel({ exhibits, onSelectExhibit, lang, detailOpen = 
       <div
         style={{
           flex: 1,
-          minHeight: '460px',
+          minHeight: 'clamp(220px, 45vh, 460px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -282,7 +282,7 @@ export function ExhibitCarousel({ exhibits, onSelectExhibit, lang, detailOpen = 
           style={{
             position: 'relative',
             width: '100%',
-            height: '440px',
+            height: 'clamp(220px, 43vh, 440px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -362,12 +362,12 @@ export function ExhibitCarousel({ exhibits, onSelectExhibit, lang, detailOpen = 
       {/* ━━ EXHIBIT INFO ZONE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <div
         style={{
-          minHeight: '160px',
+          minHeight: 'clamp(100px, 16vh, 160px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'flex-start',
-          paddingTop: '20px',
+          paddingTop: 'clamp(10px, 2vh, 20px)',
           paddingBottom: '4px',
           paddingLeft: '16px',
           paddingRight: '16px',
@@ -428,8 +428,8 @@ export function ExhibitCarousel({ exhibits, onSelectExhibit, lang, detailOpen = 
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '12px',
-          paddingBottom: '12px',
+          gap: '8px',
+          paddingBottom: 'clamp(8px, 2vh, 16px)',
         }}
       >
         {/* View Details button — hidden in detail mode */}

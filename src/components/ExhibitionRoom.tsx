@@ -62,10 +62,11 @@ export function ExhibitionRoom({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       style={{
-        height: '100vh',
+        height: '100dvh',
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: isMobile ? 'auto' : 'hidden',
       }}
     >
       {/* ── Room header (full width) ── */}
@@ -74,7 +75,7 @@ export function ExhibitionRoom({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '16px 48px',
+          padding: isMobile ? '12px 16px' : '16px 48px',
           flexShrink: 0,
           borderBottom: '1px solid rgba(201,164,92,0.1)',
           background: 'rgba(5,5,5,0.6)',
@@ -98,6 +99,7 @@ export function ExhibitionRoom({
             cursor: 'pointer',
             fontFamily: 'Inter, sans-serif',
             transition: 'color 0.2s',
+            flexShrink: 0,
           }}
           onMouseEnter={e => { playHover(); (e.currentTarget as HTMLButtonElement).style.color = '#C9A45C'; }}
           onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = '#7E5B35'; }}
@@ -106,18 +108,14 @@ export function ExhibitionRoom({
           {backLabel}
         </button>
 
-        {/* Room title (center) */}
+        {/* Room title — absolute center on desktop, flex center on mobile */}
         <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}
+          style={isMobile
+            ? { flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', overflow: 'hidden' }
+            : { position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '12px' }
+          }
         >
-          <ArtifactIcon iconType={gallery.iconType} size={16} className="text-museum-accent-dim" />
+          {!isMobile && <ArtifactIcon iconType={gallery.iconType} size={16} className="text-museum-accent-dim" />}
           <div style={{ textAlign: 'center' }}>
             <motion.p
               key={lang + '-room-title'}
@@ -126,10 +124,14 @@ export function ExhibitionRoom({
               transition={{ duration: 0.25 }}
               style={{
                 fontFamily: 'Cormorant Garamond, Georgia, serif',
-                fontSize: '16px',
+                fontSize: isMobile ? '14px' : '16px',
                 fontWeight: 600,
                 lineHeight: 1,
                 color: '#F4EBDD',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: isMobile ? '44vw' : 'none',
               }}
             >
               {roomTitle}
@@ -148,10 +150,12 @@ export function ExhibitionRoom({
           </div>
         </div>
 
-        {/* Item count */}
-        <p style={{ fontSize: '10px', letterSpacing: '0.12em', color: '#7E5B35', fontFamily: 'Inter, sans-serif' }}>
-          {exhibitCount}
-        </p>
+        {/* Item count — desktop only */}
+        {!isMobile && (
+          <p style={{ fontSize: '10px', letterSpacing: '0.12em', color: '#7E5B35', fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
+            {exhibitCount}
+          </p>
+        )}
       </div>
 
       {/* One-time light sweep on room entry */}
